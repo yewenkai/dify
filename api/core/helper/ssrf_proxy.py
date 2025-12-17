@@ -37,9 +37,11 @@ def _create_proxy_mounts() -> dict[str, httpx.HTTPTransport]:
     return {
         "http://": httpx.HTTPTransport(
             proxy=dify_config.SSRF_PROXY_HTTP_URL,
+            verify=dify_config.HTTP_REQUEST_NODE_SSL_VERIFY,
         ),
         "https://": httpx.HTTPTransport(
             proxy=dify_config.SSRF_PROXY_HTTPS_URL,
+            verify=dify_config.HTTP_REQUEST_NODE_SSL_VERIFY,
         ),
     }
 
